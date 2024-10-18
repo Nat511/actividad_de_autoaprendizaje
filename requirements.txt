@@ -4,6 +4,7 @@ streamlit
 scikit-learn
 fancyimpute
 seaborn
+plotly-express
 
 #.\.venv\Scripts\activate
 #streamlit run
