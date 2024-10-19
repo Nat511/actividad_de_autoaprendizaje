@@ -3,7 +3,6 @@ import pandas as pd
 
 st.title('Análisis de Datos')
 
-# Subir archivo CSV
 uploaded_file = st.file_uploader('Subir Archivo CSV', type=['csv'])
 
 def detectar_columnas_con_outliers(df):
@@ -13,24 +12,20 @@ def detectar_columnas_con_outliers(df):
     """
     columnas_con_outliers = []
 
-    # Recorremos solo las columnas numéricas
     for column in df.select_dtypes(include='number').columns:
         Q1 = df[column].quantile(0.25)
         Q3 = df[column].quantile(0.75)
         IQR = Q3 - Q1
 
-        # Definir límites para detectar outliers
         lower_limit = Q1 - 1.5 * IQR
         upper_limit = Q3 + 1.5 * IQR
 
-        # Verificar si hay algún valor fuera de los límites
         if df[(df[column] < lower_limit) | (df[column] > upper_limit)].shape[0] > 0:
             columnas_con_outliers.append(column)
 
     return columnas_con_outliers
 
 if uploaded_file is not None:
-    # Cargar el archivo CSV
     df = pd.read_csv(uploaded_file, encoding='latin-1', delimiter=',')
     
     st.subheader('Primeras filas del dataset')
@@ -54,7 +49,6 @@ if uploaded_file is not None:
     st.subheader('Número de filas duplicadas')
     st.write(df.duplicated().sum())
 
-    # Detectar y mostrar columnas con outliers
     columnas_con_outliers = detectar_columnas_con_outliers(df)
     st.subheader('Columnas con datos atípicos (Outliers)')
     if columnas_con_outliers:
