@@ -58,35 +58,35 @@ def plot_distribution(data, title):
 # Gráficos de distribución (Gaussianas) para los datos originales y transformados
 st.subheader("Distribución de los Datos Antes y Después de la Transformación")
 
-# Distribución de los datos originales
-# c1, c2, c3 = st.columns(3)
-# with c1:
-#     st.write("Original - [Precio]")
-#     fig = plot_distribution(df_numerico['price'], "Distribución Precio Original")
-#     st.pyplot(fig)
-
-# with c2:
-#     st.write("Original - Ventas")
-#     fig = plot_distribution(df_numerico['sales_volume'], "Distribución Ventas Original")
-#     st.pyplot(fig)
-
-# with c3:
-#     st.write("Original - Inventario")
-#     fig = plot_distribution(df_numerico['battery_capacity'], "Distribución Inventario Original")
-#     st.pyplot(fig)
-
-# Selecciona las primeras tres columnas que deseas mostrar
-columnas_a_mostrar = df_numerico.columns[:3]
-
-# Crear columnas en Streamlit para mostrar gráficos y nombres
+#Distribución de los datos originales
 c1, c2, c3 = st.columns(3)
+with c1:
+    st.write("Original - [Precio]")
+    fig = plot_distribution(df_numerico['price'], "Distribución Precio Original")
+    st.pyplot(fig)
 
-# Muestra automáticamente cada gráfico y nombre de columna en cada sección
-for col, container in zip(columnas_a_mostrar, [c1, c2, c3]):
-    with container:
-        st.write(f"Original - [{col}]")
-        fig = plot_distribution(df_numerico[col], f"Distribución {col} Original")
-        st.pyplot(fig)
+with c2:
+    st.write("Original - Ventas")
+    fig = plot_distribution(df_numerico['sales_volume'], "Distribución Ventas Original")
+    st.pyplot(fig)
+
+with c3:
+    st.write("Original - Inventario")
+    fig = plot_distribution(df_numerico['battery_capacity'], "Distribución Inventario Original")
+    st.pyplot(fig)
+
+# # Selecciona las primeras tres columnas que deseas mostrar
+# columnas_a_mostrar = df_numerico.columns[:3]
+
+# # Crear columnas en Streamlit para mostrar gráficos y nombres
+# c1, c2, c3 = st.columns(3)
+
+# # Muestra automáticamente cada gráfico y nombre de columna en cada sección
+# for col, container in zip(columnas_a_mostrar, [c1, c2, c3]):
+#     with container:
+#         st.write(f"Original - [{col}]")
+#         fig = plot_distribution(df_numerico[col], f"Distribución {col} Original")
+#         st.pyplot(fig)
 
 
 # Distribución de los datos después de la normalización Min-Max
